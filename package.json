@@ -1,0 +1,32 @@
+{
+  "name": "ts-transform-creator",
+  "version": "1.0.0-alpha.1",
+  "description": "Generate parameterized node factories from TypeScript source strings",
+  "main": "./lib/ts-transform-creator.js",
+  "typings": "./lib/ts-transform-creator.d.ts",
+  "repository": "git@github.com:marionebl/ts-transform-creator.git",
+  "author": "Mario Nebl <hello@mario-nebl.de>",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "pretest": "tsc jest.config.ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "@types/node": "^12.12.21",
+    "@types/uuid": "^3.4.6",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "ts-transformer-testing-library": "^1.0.0-alpha.7",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "@phenomnomnominal/tsquery": "^4.0.0",
+    "ts-creator": "^1.2.5",
+    "uuid": "^3.3.3"
+  }
+}
