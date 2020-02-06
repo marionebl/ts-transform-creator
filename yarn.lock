@@ -3484,8 +3484,8 @@ ts-jest@^24.2.0:
 
 ts-transformer-testing-library@^1.0.0-alpha.7:
   version "1.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/ts-transformer-testing-library/-/ts-transformer-testing-library-1.0.0-alpha.7.tgz#bcb445f8811dbf7741796c159c5e0e57c4250c53"
-  integrity sha512-7TE6oQAyIV1EU4Yb6WQ/X7wtyFyAJDmvqWyr7iGMqnaozAi6bypOq7Uf9ELQbFHyVQbAjAXO4lcxovGiGfcW5w==
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/ts-transformer-testing-library/-/ts-transformer-testing-library-1.0.0-alpha.7.tgz#bcb445f8811dbf7741796c159c5e0e57c4250c53"
+  integrity sha1-vLRF+IEdv3dBeWwVnF4OV8QlDFM=
   dependencies:
     "@ts-morph/bootstrap" "^0.3.0"
 

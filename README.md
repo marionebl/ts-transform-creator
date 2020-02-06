@@ -48,6 +48,20 @@ const createHelloWorld = props =>
   );
 ```
 
+## Supported Nodes
+
+* [x] StringLiteral
+* [x] Identifier
+* [x] ReturnStatement
+* [x] Block
+* [ ] ConciseBody
+* [ ] ArrayLiteralExpression
+* [ ] ObjectExpression
+* [ ] NumericLiteral
+* [ ] Node[]
+
+
+
 ## License
 
 MIT. Copyright 2019 - present Mario Nebl
