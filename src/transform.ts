@@ -4,7 +4,6 @@ import uuid from "uuid";
 import { includes } from "./node";
 import creator from "./ts-creator";
 import { createTsCall } from "./ts-creator/helper";
-import { tsc } from "./ts-transform-creator";
 
 interface CompilationContext {
   context: ts.TransformationContext;
@@ -66,10 +65,10 @@ function createCreatorFunction(
             return acc;
           }
 
-          const symbol = type.getSymbol();
+          const symbol = type.aliasSymbol || type.getSymbol();
           const name = symbol ? symbol.getName() : undefined;
 
-          const id = `a${uuid
+          const id = `${name}_${uuid
             .v4()
             .split("-")
             .join("")}`;
@@ -106,8 +105,14 @@ function createCreatorFunction(
                 registry: acc.registry
               };
             }
+            case "ConciseBody": {
+              return {
+                source: `${acc.source}(${id})${span.literal.text}`,
+                registry: acc.registry
+              };
+            }
             default:
-              console.log(span.expression.getFullText());
+              console.warn(span.expression.getFullText());
               console.warn(name);
           }
 

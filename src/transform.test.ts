@@ -26,8 +26,9 @@ const transformer = new Transformer()
       export interface ArrowFunction { kind: "ArrowFunction"; }
       export interface ReturnStatement { kind: "ReturnStatement"; }
       export interface Block { kind: "Block" };
-      export type Expression = any;
-      export type Statement = any;
+      export type Expression = StringLiteral | Identifier;
+      export type Statement = ReturnStatement;
+      export type ConciseBody = Expression | Block;
 
       export const createStringLiteral = (input: string): StringLiteral => ({ kind: "StringLiteral" });
       export const createIdentifier = (input: string): Identifier => ({ kind: "Identifier" });
@@ -38,6 +39,7 @@ const transformer = new Transformer()
         Node,
         ArrowFunction,
         Block,
+        ConciseBody,
         StringLiteral,
         Identifier,
         createReturn,
@@ -199,3 +201,18 @@ test("works for blocks", () => {
     `((p) => ts.createBlock([ts.createReturn(ts.createIdentifier(p.name))]))(props)))`
   );
 });
+
+test("works for concise body", () => {
+  const result = transformer.transform(`
+    import * as ts from "typescript";
+    import {tsc} from "ts-transform-creator";
+    type Named = { name: string };
+
+    tsc<unknown, Named>\`() => \${(p: Named): ts.ConciseBody => ts.createIdentifier(p.name)}\`;
+  `);
+
+  expect(result).toMatch(
+    `((p) => ts.createIdentifier(p.name))(props)))`
+  );
+});
+
